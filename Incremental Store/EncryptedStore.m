@@ -290,6 +290,7 @@ static const NSInteger kTableCheckVersion = 1;
     
     if (*error)
     {
+        [[NSNotificationCenter defaultCenter] postNotificationName: @"sqlite-file-404" object:nil userInfo:@{@"error": *error}];
         NSLog(@"Unable to add persistent store.");
         NSLog(@"Error: %@\n%@\n%@", *error, [*error userInfo], [*error localizedDescription]);
     }
